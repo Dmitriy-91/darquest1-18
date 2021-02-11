@@ -11,7 +11,6 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+mix
+  .copy('darquest/dist/spa/index.html', 'resources/views/spa.blade.php')
+  .copyDirectory('darquest/dist/spa', 'public');
