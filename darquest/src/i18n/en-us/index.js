@@ -1,9 +1,11 @@
 export default {
   main: {
-    log_in: 'Log in',
+    sign_in: 'Sign in',
     login: 'Login',
     in_game: 'In game',
-    password: 'Password'
+    password: 'Password',
+    sign_up: 'Sign up',
+    username: 'Username'
   },
   app: {
     name: 'DarQuest 1/18'
