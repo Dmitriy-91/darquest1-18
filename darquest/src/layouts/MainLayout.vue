@@ -12,10 +12,12 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          {{ $t('app.name') }}
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div>
+          <toolbar-profile-info></toolbar-profile-info>
+        </div>
       </q-toolbar>
     </q-header>
 
@@ -48,6 +50,7 @@
 
 <script>
 import EssentialLink from 'components/EssentialLink.vue'
+import ToolbarProfileInfo from 'components/app/TollbarProfileInfo'
 
 const linksData = [
   {
@@ -96,7 +99,7 @@ const linksData = [
 
 export default {
   name: 'MainLayout',
-  components: { EssentialLink },
+  components: { ToolbarProfileInfo, EssentialLink },
   data () {
     return {
       leftDrawerOpen: false,
