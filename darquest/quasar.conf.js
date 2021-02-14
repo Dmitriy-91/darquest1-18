@@ -89,7 +89,7 @@ module.exports = function (/* ctx */) {
       config: {
         dark: true,
         brand: {
-          primary: '#ffff00'
+          primary: '#eddf40'
         }
       },
 
