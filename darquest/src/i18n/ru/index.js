@@ -9,5 +9,9 @@ export default {
   },
   app: {
     name: 'DarQuest 1/18'
+  },
+  validation: {
+    email_is_required: 'E-mail обязателен',
+    email_is_invalid_format: 'Введите корректный E-mail'
   }
 }
