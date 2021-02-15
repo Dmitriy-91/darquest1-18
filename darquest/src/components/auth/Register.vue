@@ -10,14 +10,57 @@
         <q-input
             rounded
             standout
-            v-model="login"
-            :label="$t('main.username')"
+            v-model="username"
+            :label="$t('attributes.username')"
+            :rules="[
+              () => $v.username.required || $t('validation.required', {'attribute': $t('attributes.username')}),
+              () => $v.username.minLength || $t('validation.min.string', {
+                'attribute': $t('attributes.username'),
+                'min': usernameMinLength
+              })
+            ]"
+            @input="$v.username.$touch()"
         />
         <q-input
             rounded
             standout
+            v-model.trim="email"
+            :label="$t('attributes.email')"
+            :rules="[
+              () => $v.email.required || $t('validation.required', {'attribute': $t('attributes.email')}),
+              () => $v.email.email || $t('validation.invalid_format', {'attribute': $t('attributes.email')})
+            ]"
+            @input="$v.email.$touch()"
+        />
+        <q-input
+            rounded
+            standout
+            type="password"
             v-model="password"
-            :label="$t('main.password')"
+            :label="$t('attributes.password')"
+            :rules="[
+              () => $v.password.required || $t('validation.required', {'attribute': $t('attributes.password')}),
+              () => $v.password.minLength || $t('validation.min.string', {
+                'attribute': $t('attributes.password'),
+                'min': passwordMinLength
+              })
+            ]"
+            @input="$v.password.$touch()"
+        />
+        <q-input
+            rounded
+            standout
+            type="password"
+            v-model="confirmPassword"
+            :label="$t('attributes.confirmPassword')"
+            :rules="[
+              () => $v.confirmPassword.required || $t('validation.required', {'attribute': $t('attributes.password')}),
+              () => $v.confirmPassword.sameAsPassword || $t('validation.same', {
+                'attribute': $t('attributes.confirmPassword'),
+                'other': $t('attributes.password')
+              })
+            ]"
+            @input="$v.confirmPassword.$touch()"
         />
       </q-card-section>
       <q-card-actions>
@@ -26,8 +69,8 @@
             push
             glossy
             icon="login"
-            :label="$t('in_game')"
-            @click="login"
+            :label="$t('main.in_game')"
+            @click="registerUser"
         >
         </q-btn>
       </q-card-actions>
@@ -36,12 +79,42 @@
 </template>
 
 <script>
+import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
+import { user as userSettings } from '../../setttings'
+
 export default {
   name: 'Register',
   data () {
     return {
-      login: '',
-      password: ''
+      username: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      usernameMinLength: userSettings.usernameMinLength,
+      passwordMinLength: userSettings.passwordMinLength
+    }
+  },
+  methods: {
+    registerUser () {
+      console.log('registerUser')
+    }
+  },
+  validations: {
+    username: {
+      required,
+      minLength: minLength(userSettings.usernameMinLength)
+    },
+    email: {
+      required,
+      email
+    },
+    password: {
+      required,
+      minLength: minLength(userSettings.passwordMinLength)
+    },
+    confirmPassword: {
+      required,
+      sameAsPassword: sameAs('password')
     }
   }
 }
