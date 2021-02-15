@@ -5,7 +5,6 @@
         glossy
         icon="login"
         :label="$t('main.in_game')"
-        @click="showLoginForm"
     >
       <div>
         <q-tabs v-model="tabs">
