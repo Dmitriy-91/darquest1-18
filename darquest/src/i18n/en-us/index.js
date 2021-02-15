@@ -1,17 +1,26 @@
 export default {
   main: {
     sign_in: 'Sign in',
-    login: 'Login',
     in_game: 'In game',
-    password: 'Password',
-    sign_up: 'Sign up',
-    username: 'Username'
+    sign_up: 'Sign up'
   },
   app: {
     name: 'DarQuest 1/18'
   },
   validation: {
-    email_is_required: 'E-mail is required',
-    email_is_invalid_format: 'Invalid e-mail format'
+    required: '{attribute} is required',
+    invalid_format: 'The {attribute} format is invalid.',
+    incorrect_attribute: 'The {attribute} is incorrect.',
+    same: 'The {attribute} and {other} must match.',
+    min: {
+      string: 'The {attribute} must be at least {min} characters.'
+    }
+  },
+  attributes: {
+    email: 'E-mail',
+    password: 'Password',
+    confirmPassword: 'Confirm password',
+    username: 'Username',
+    login: 'Login'
   }
 }
