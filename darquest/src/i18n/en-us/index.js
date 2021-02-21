@@ -21,6 +21,7 @@ export default {
     password: 'Password',
     confirmPassword: 'Confirm password',
     username: 'Username',
-    login: 'Login'
+    login: 'Login',
+    rememberMe: 'Remember Me'
   }
 }

@@ -20,7 +20,8 @@ export default {
     email: 'E-mail',
     password: 'Пароль',
     confirmPassword: 'Подтверждение пароля',
+    username: 'Имя пользователя',
     login: 'Логин',
-    username: 'Имя пользователя'
+    rememberMe: 'Запомнить меня'
   }
 }
