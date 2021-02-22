@@ -10,11 +10,11 @@
         <q-input
             rounded
             standout
-            v-model="username"
+            v-model="name"
             :label="$t('attributes.username')"
             :rules="[
-              () => $v.username.required || $t('validation.required', {'attribute': $t('attributes.username')}),
-              () => $v.username.minLength || $t('validation.min.string', {
+              () => $v.name.required || $t('validation.required', {'attribute': $t('attributes.username')}),
+              () => $v.name.minLength || $t('validation.min.string', {
                 'attribute': $t('attributes.username'),
                 'min': usernameMinLength
               })
@@ -86,7 +86,7 @@ export default {
   name: 'Register',
   data () {
     return {
-      username: '',
+      name: '',
       email: '',
       password: '',
       confirmPassword: '',
@@ -100,7 +100,7 @@ export default {
     }
   },
   validations: {
-    username: {
+    name: {
       required,
       minLength: minLength(userSettings.usernameMinLength)
     },
