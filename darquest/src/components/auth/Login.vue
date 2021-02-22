@@ -29,6 +29,11 @@
             ]"
             @input="$v.password.$touch()"
         />
+        <q-checkbox
+            left-label
+            v-model="rememberToken"
+            :label="$t('attributes.rememberMe')"
+        />
       </q-card-section>
       <q-card-actions>
         <q-btn
@@ -54,7 +59,8 @@ export default {
   data () {
     return {
       login: '',
-      password: ''
+      password: '',
+      rememberToken: false
     }
   },
   methods: {
