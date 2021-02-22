@@ -1,7 +1,7 @@
+import axios from 'axios'
 import router from './index'
 
-export default new class {
-
+class Auth {
   csrf () {
     return axios.get(router.auth['csrf-cookie'])
   }
@@ -10,7 +10,11 @@ export default new class {
     return axios.post(router.auth.login, { email, password })
   }
 
-  register ({ username, email, password, confirmPassword }) {
-    return axios.post(router.auth.register, {username, email, password, confirmPassword})
+  register ({ name, email, password, confirmPassword, rememberToken }) {
+    return axios.post(router.auth.register,
+      { name, email, password, confirmPassword, rememberToken }
+    )
   }
 }
+
+export default new Auth()

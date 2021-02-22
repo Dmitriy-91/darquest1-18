@@ -1,5 +1,6 @@
 import routes from './routes'
+import auth from './auth'
 
-export {
-  routes
+export default {
+  routes, auth
 }
