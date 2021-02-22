@@ -19,7 +19,7 @@
                 'min': usernameMinLength
               })
             ]"
-            @input="$v.username.$touch()"
+            @input="$v.name.$touch()"
         />
         <q-input
             rounded
@@ -81,7 +81,7 @@
 <script>
 import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
 import { user as userSettings } from '../../setttings'
-import api from '../../api/index'
+import User from '../../core/models/user'
 
 export default {
   name: 'Register',
@@ -97,7 +97,7 @@ export default {
   },
   methods: {
     registerUser () {
-      api.auth.register({
+      User.register({
         name: this.name,
         email: this.email,
         password: this.password,
