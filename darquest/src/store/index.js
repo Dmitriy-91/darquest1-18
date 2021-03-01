@@ -1,29 +1,32 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import VuexORM from '@vuex-orm/core'
+import VuexORMAxios from '@vuex-orm/plugin-axios'
+import axios from '../boot/axios'
+import { models } from '../core/index'
 
 // import example from './module-example'
 
 Vue.use(Vuex)
 
-/*
- * If not building with SSR mode, you can
- * directly export the Store instantiation;
- *
- * The function below can be async too; either use
- * async/await or return a Promise which resolves
- * with the Store instance.
- */
+VuexORM.use(VuexORMAxios, {
+  axios,
+  headers: { 'X-Requested-With': 'XMLHttpRequest' },
+  baseURL: '/api'
+})
 
-export default function (/* { ssrContext } */) {
-  const Store = new Vuex.Store({
-    modules: {
-      // example
-    },
+// Create a new instance of Database.
+const database = new VuexORM.Database()
 
-    // enable strict mode (adds overhead!)
-    // for dev mode only
-    strict: process.env.DEBUGGING
-  })
-
-  return Store
+// Register Models to Database.
+for (const key in models) {
+  database.register(models[key])
 }
+
+const Store = new Vuex.Store({
+  modules: {},
+  plugins: [VuexORM.install(database)],
+  strict: process.env.DEBUGGING
+})
+
+export default Store
