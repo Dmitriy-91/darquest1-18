@@ -81,7 +81,7 @@
 <script>
 import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
 import { user as userSettings } from '../../setttings'
-import User from '../../core/models/user'
+import api from '../../api/index'
 
 export default {
   name: 'Register',
@@ -92,12 +92,13 @@ export default {
       password: '',
       confirmPassword: '',
       usernameMinLength: userSettings.usernameMinLength,
-      passwordMinLength: userSettings.passwordMinLength
+      passwordMinLength: userSettings.passwordMinLength,
+      auth: api.auth
     }
   },
   methods: {
     registerUser () {
-      User.register({
+      this.auth.register({
         name: this.name,
         email: this.email,
         password: this.password,
