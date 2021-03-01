@@ -23,6 +23,12 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
+
+                // DDS begin 23.02.2021 {
+                if ($request->expectsJson()) {
+                    return response()->json(['error' => 'Already authenticated.'], 200);
+                }
+                // } DDS end 23.02.2021
                 return redirect(RouteServiceProvider::HOME);
             }
         }
