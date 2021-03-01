@@ -2,7 +2,9 @@ export default {
   main: {
     sign_in: 'Войти',
     in_game: 'В игру',
-    sign_up: 'Регистрация'
+    sign_up: 'Регистрация',
+    reset_password: 'Сбросить пароль',
+    send: 'Send'
   },
   app: {
     name: 'DarQuest 1/18'
