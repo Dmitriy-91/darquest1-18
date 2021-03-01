@@ -21,7 +21,6 @@ module.exports = function (/* ctx */) {
     boot: [
 
       'i18n',
-      'axios',
       'vulidate'
     ],
 
@@ -77,8 +76,9 @@ module.exports = function (/* ctx */) {
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
     devServer: {
+      host: 'darquest.loc',
       https: false,
-      port: 8080,
+      port: 555,
       open: true // opens browser window automatically
     },
 
