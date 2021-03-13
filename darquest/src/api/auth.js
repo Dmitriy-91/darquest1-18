@@ -15,6 +15,11 @@ class Auth {
       { name, email, password, password_confirmation: confirmPassword }
     )
   }
+
+  async forgotPassword ({ email }) {
+    await this.csrf()
+    return axios.post(router.routes.auth['forgot-password'], { email })
+  }
 }
 
 export default new Auth()
