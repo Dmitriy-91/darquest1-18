@@ -4,7 +4,9 @@ export default {
     in_game: 'In game',
     sign_up: 'Sign up',
     reset_password: 'Reset password',
-    send: 'Отправить'
+    send: 'Send',
+    return: 'return',
+    reset_passwordemail_sent: 'Reset password email sent.'
   },
   app: {
     name: 'DarQuest 1/18'
@@ -16,7 +18,8 @@ export default {
     same: 'The {attribute} and {other} must match.',
     min: {
       string: 'The {attribute} must be at least {min} characters.'
-    }
+    },
+    email_has_not_register: 'This e-mail is not registered.'
   },
   attributes: {
     email: 'E-mail',
