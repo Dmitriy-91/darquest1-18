@@ -16,7 +16,13 @@
 
         <q-tab-panels v-model="tabs">
           <q-tab-panel name="login">
-            <login></login>
+            <login v-show="!forgotPassword"
+                   @forgot-password="switchLoginForgotPassword"
+            ></login>
+            <forgotPassword
+                v-show="forgotPassword"
+                @back-to-login="switchLoginForgotPassword"
+            ></forgotPassword>
           </q-tab-panel>
           <q-tab-panel name="register">
             <register></register>
@@ -29,15 +35,22 @@
 </template>
 
 <script>
-import Login from '../auth/Login'
+import Login from 'components/auth/Login'
 import Register from 'components/auth/Register'
+import ForgotPassword from 'components/auth/ForgotPassword'
 
 export default {
   name: 'ToolbarProfileInfo',
-  components: { Register, Login },
+  components: { Register, Login, ForgotPassword },
   data () {
     return {
-      tabs: 'login'
+      tabs: 'login',
+      forgotPassword: false
+    }
+  },
+  methods: {
+    switchLoginForgotPassword () {
+      this.forgotPassword = !this.forgotPassword
     }
   }
 }

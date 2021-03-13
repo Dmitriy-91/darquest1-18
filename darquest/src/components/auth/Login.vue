@@ -35,7 +35,13 @@
             :label="$t('attributes.rememberMe')"
         />
       </q-card-section>
-      <q-card-actions>
+      <q-card-actions align="center">
+        <q-btn
+            type="a"
+            text-color="primary"
+            :label="$t('main.reset_password')"
+            @click="forgotPassword"
+        />
         <q-btn
             class="full-width"
             push
@@ -66,6 +72,9 @@ export default {
   methods: {
     loginUser () {
       console.log('loginUser')
+    },
+    forgotPassword () {
+      this.$emit('forgot-password')
     }
   },
   validations: {
