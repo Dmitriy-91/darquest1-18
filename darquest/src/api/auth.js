@@ -3,7 +3,7 @@ import router from './index'
 
 class Auth {
   csrf () {
-    return axios.get(router.auth['csrf-cookie'])
+    return axios.get(router.routes.auth['csrf-cookie'])
   }
 
   login ({ email, password }) {
