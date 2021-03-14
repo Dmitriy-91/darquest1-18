@@ -27,7 +27,6 @@ class Auth {
       email, password, password_confirmation: confirmPassword, token
     })
   }
-
 }
 
 export default new Auth()
