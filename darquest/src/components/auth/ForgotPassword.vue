@@ -67,7 +67,7 @@ export default {
       auth: api.auth,
       loading: false,
       hasError: false,
-      errorMessage: '',
+      errorMessage: null,
       showInput: true,
       isSuccess: false
     }
@@ -87,8 +87,8 @@ export default {
         .catch(error => {
           if (error.response.status === 422) {
             this.errorMessage = this.$t('validation.email_has_not_register')
-            console.log(JSON.parse(JSON.stringify(error)))
           }
+          this.errorMessage = error.message
           this.loading = false
           this.hasError = true
         })
