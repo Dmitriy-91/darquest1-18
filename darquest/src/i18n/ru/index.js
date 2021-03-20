@@ -19,7 +19,8 @@ export default {
     min: {
       string: 'Количество символов в поле {attribute} должно быть не меньше {min}.'
     },
-    email_has_not_register: 'Данный e-mail не зарегистрирован.'
+    email_has_not_register: 'Данный e-mail не зарегистрирован.',
+    invalit_data_to_login: 'Введенная пара {attribute} или пароль неверны.'
   },
   attributes: {
     email: 'E-mail',

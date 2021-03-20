@@ -19,7 +19,8 @@ export default {
     min: {
       string: 'The {attribute} must be at least {min} characters.'
     },
-    email_has_not_register: 'This e-mail is not registered.'
+    email_has_not_register: 'This e-mail is not registered.',
+    invalit_data_to_login: 'The given {attribute} or password was invalid.'
   },
   attributes: {
     email: 'E-mail',
