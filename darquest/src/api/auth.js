@@ -36,6 +36,10 @@ class Auth {
   logout () {
     return axios.post(router.routes.auth.logout)
   }
+
+  authUser () {
+    return axios.get(router.routes.auth.user)
+  }
 }
 
 export default new Auth()
