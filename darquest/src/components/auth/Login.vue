@@ -10,13 +10,10 @@
         <q-input
             rounded
             standout
-            v-model.trim="login"
-            :label="$t('attributes.username')"
-            :rules="[
-              () => $v.login.required || $t('validation.required', {'attribute': $t('attributes.email')}),
-              () => $v.login.email || $t('validation.invalid_format', {'attribute': $t('attributes.email')})
-            ]"
-            @input="$v.login.$touch()"
+            v-model.trim="email"
+            :label="$t('attributes.email')"
+            :rules="emailRules"
+            @input="$v.email.$touch()"
         />
         <q-input
             rounded
@@ -24,9 +21,7 @@
             type="password"
             v-model.trim="password"
             :label="$t('attributes.password')"
-            :rules="[
-              () => $v.password.required || $t('validation.required', {'attribute': $t('attributes.password')})
-            ]"
+            :rules="passwordRules"
             @input="$v.password.$touch()"
         />
         <q-checkbox
@@ -64,9 +59,37 @@ export default {
   name: 'Login',
   data () {
     return {
-      login: '',
+      email: '',
       password: '',
       rememberToken: false
+    }
+  },
+  computed: {
+    emailRules () {
+      return [
+        () => {
+          this.$v.email.required ||
+          this.$t('validation.required', {
+            attribute: this.$t('attributes.email')
+          })
+        },
+        () => {
+          this.$v.email.email ||
+          this.$t('validation.invalid_format', {
+            attribute: this.$t('attributes.email')
+          })
+        }
+      ]
+    },
+    passwordRules () {
+      return [
+        () => {
+          this.$v.password.required ||
+          this.$t('validation.required', {
+            attribute: this.$t('attributes.password')
+          })
+        }
+      ]
     }
   },
   methods: {
@@ -78,7 +101,7 @@ export default {
     }
   },
   validations: {
-    login: {
+    email: {
       required,
       email
     },
