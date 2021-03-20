@@ -5,6 +5,7 @@ export default {
     register: '/register',
     'forgot-password': '/forgot-password',
     'reset-password': '/reset-password',
-    logout: '/logout'
+    logout: '/logout',
+    user: '/auth-user'
   }
 }
