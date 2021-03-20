@@ -32,6 +32,10 @@ class Auth {
       email, password, password_confirmation: confirmPassword, token
     })
   }
+
+  logout () {
+    return axios.post(router.routes.auth.logout)
+  }
 }
 
 export default new Auth()
