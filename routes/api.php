@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => 'auth:sanctum'], function(){
+
+    /*
+     * Авторизованный пользователь
+     */
+    Route::get('auth-user', [AuthController::class, 'user'])
+        ->name( 'contact-info.show');
+
 });
