@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,6 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
      * Авторизованный пользователь
      */
     Route::get('auth-user', [AuthController::class, 'user'])
-        ->name( 'contact-info.show');
+        ->name( 'auth-user');
 
 });
