@@ -81,7 +81,7 @@
 <script>
 import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
 import { user as userSettings } from '../../setttings'
-import api from '../../api/index'
+import api from 'src/api/index'
 
 export default {
   name: 'Register',
