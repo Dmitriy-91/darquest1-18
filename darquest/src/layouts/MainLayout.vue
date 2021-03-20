@@ -16,7 +16,7 @@
         </q-toolbar-title>
 
         <div>
-          <toolbar-profile-info></toolbar-profile-info>
+          <toolbar-action></toolbar-action>
         </div>
       </q-toolbar>
     </q-header>
@@ -50,7 +50,7 @@
 
 <script>
 import EssentialLink from 'components/EssentialLink.vue'
-import ToolbarProfileInfo from 'components/app/TollbarProfileInfo'
+import ToolbarAction from 'components/app/ToolbarAction'
 
 const linksData = [
   {
@@ -99,7 +99,7 @@ const linksData = [
 
 export default {
   name: 'MainLayout',
-  components: { ToolbarProfileInfo, EssentialLink },
+  components: { ToolbarAction, EssentialLink },
   data () {
     return {
       leftDrawerOpen: false,
