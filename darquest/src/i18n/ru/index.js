@@ -6,7 +6,8 @@ export default {
     reset_password: 'Сбросить пароль',
     send: 'Отправить',
     return: 'Вернуться',
-    reset_passwordemail_sent: 'На указанный e-mail отправлено письмо для сброса пароля.'
+    reset_passwordemail_sent: 'На указанный e-mail отправлено письмо для сброса пароля.',
+    logout: 'Выйти'
   },
   app: {
     name: 'DarQuest 1/18'

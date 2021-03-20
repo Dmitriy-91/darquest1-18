@@ -6,7 +6,8 @@ export default {
     reset_password: 'Reset password',
     send: 'Send',
     return: 'return',
-    reset_passwordemail_sent: 'Reset password email sent.'
+    reset_passwordemail_sent: 'Reset password email sent.',
+    logout: 'Logout'
   },
   app: {
     name: 'DarQuest 1/18'
