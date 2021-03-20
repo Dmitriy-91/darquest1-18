@@ -74,7 +74,7 @@
 <script>
 import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
 import { user as userSettings } from 'src/setttings'
-import api from 'src/api'
+import api from 'src/api/index'
 
 export default {
   name: 'ResetPassword',
