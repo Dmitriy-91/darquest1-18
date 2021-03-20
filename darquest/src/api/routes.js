@@ -4,6 +4,7 @@ export default {
     login: '/login',
     register: '/register',
     'forgot-password': '/forgot-password',
-    'reset-password': '/reset-password'
+    'reset-password': '/reset-password',
+    logout: '/logout'
   }
 }
