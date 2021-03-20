@@ -6,7 +6,9 @@
           <div class="text-h6 q-mb-md">{{ $t('main.sign_in') }}</div>
         </div>
       </div>
-      <q-card-section class="q-gutter-md">
+      <q-card-section class="q-gutter-md"
+        @keyup.enter="loginUser"
+      >
         <q-input
             rounded
             standout
@@ -26,9 +28,12 @@
         />
         <q-checkbox
             left-label
-            v-model="rememberToken"
+            v-model="remember"
             :label="$t('attributes.rememberMe')"
         />
+
+        <br>
+        <span class="text-warning" v-show="hasError">{{ errorMessage }}</span>
       </q-card-section>
       <q-card-actions align="center">
         <q-btn
@@ -43,6 +48,7 @@
             glossy
             icon="login"
             :label="$t('main.in_game')"
+            :loading="loading"
             @click="loginUser"
         >
         </q-btn>
@@ -54,6 +60,7 @@
 <script>
 import { required, email, minLength } from 'vuelidate/lib/validators'
 import { user as userSettings } from '../../setttings'
+import api from 'src/api/index'
 
 export default {
   name: 'Login',
@@ -61,7 +68,10 @@ export default {
     return {
       email: '',
       password: '',
-      rememberToken: false
+      remember: false,
+      errorMessage: '',
+      loading: false,
+      auth: api.auth
     }
   },
   computed: {
@@ -94,7 +104,32 @@ export default {
   },
   methods: {
     loginUser () {
-      console.log('loginUser')
+      this.error = null
+      this.errorMessage = null
+      this.loading = true
+      const data = {
+        email: this.email,
+        password: this.password,
+        remember: this.remember
+      }
+      this.auth.login(data)
+        .then(() => {
+          this.loading = false
+          this.$router.push('/home')
+        })
+        .catch(error => {
+          this.loading = false
+          this.hasError = true
+          console.log('error.response')
+          console.log(error.response)
+          if (error.response.status === 422) {
+            this.errorMessage = this.$t('validation.invalit_data_to_login', {
+              attribute: this.$t('attributes.email')
+            })
+          } else {
+            this.errorMessage = error.message
+          }
+        })
     },
     forgotPassword () {
       this.$emit('forgot-password')
