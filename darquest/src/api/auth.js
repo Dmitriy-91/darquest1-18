@@ -6,8 +6,13 @@ class Auth {
     return axios.get(router.routes.auth['csrf-cookie'])
   }
 
-  login ({ email, password }) {
-    return axios.post(router.auth.login, { email, password })
+  async login ({ email, password, remember }) {
+    await this.csrf()
+    return axios.post(router.routes.auth.login, {
+      email,
+      password,
+      remember
+    })
   }
 
   register ({ name, email, password, confirmPassword }) {
