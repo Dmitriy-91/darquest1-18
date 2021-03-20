@@ -120,8 +120,6 @@ export default {
         .catch(error => {
           this.loading = false
           this.hasError = true
-          console.log('error.response')
-          console.log(error.response)
           if (error.response.status === 422) {
             this.errorMessage = this.$t('validation.invalit_data_to_login', {
               attribute: this.$t('attributes.email')
