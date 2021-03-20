@@ -57,7 +57,7 @@
 
 <script>
 import { required, email } from 'vuelidate/lib/validators'
-import api from '../../api/index'
+import api from 'src/api/index'
 
 export default {
   name: 'ForgotPassword',
