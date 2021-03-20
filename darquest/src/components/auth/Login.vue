@@ -70,6 +70,7 @@ export default {
       password: '',
       remember: false,
       errorMessage: '',
+      hasError: false,
       loading: false,
       auth: api.auth
     }
@@ -115,6 +116,7 @@ export default {
       this.auth.login(data)
         .then(() => {
           this.loading = false
+          this.store.dispatch('auth/getUser')
           this.$router.push('/home')
         })
         .catch(error => {
