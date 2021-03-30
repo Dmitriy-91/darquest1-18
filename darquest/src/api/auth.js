@@ -37,8 +37,9 @@ class Auth {
     return axios.post(router.routes.auth.logout)
   }
 
-  authUser () {
-    return axios.get(router.routes.auth.user)
+  async authUser () {
+    await this.csrf()
+    return await axios.get(router.routes.auth.user)
   }
 }
 
