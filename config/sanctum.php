@@ -1,5 +1,8 @@
 <?php
 
+$hostToStatefulInProdaction = 'darquest.ru';
+$hostToStateful = 'localhost,localhost:3000,localhost:8080,127.0.0.1,127.0.0.1:8000,::1,localhost:8081,darquest.loc,darquest.loc:555';
+
 return [
 
     /*
@@ -13,13 +16,13 @@ return [
     |
     */
 
-    'stateful' => explode(',', env(
-        'SANCTUM_STATEFUL_DOMAINS',
-        'localhost,localhost:3000,localhost:8080,127.0.0.1,127.0.0.1:8000,::1,localhost:8081,darquest.loc'
-    )),
+    'stateful' => explode(',',
+        env('APP_ENV', 'production') === 'production'
+            ? env('SANCTUM_STATEFUL_DOMAINS', $hostToStatefulInProdaction)
+            : $hostToStateful),
 
     /*
-    |--------------------------------------------------------------------------
+    |-------------xx-------------------------------------------------------------
     | Expiration Minutes
     |--------------------------------------------------------------------------
     |
