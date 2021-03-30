@@ -9,6 +9,8 @@
       <q-card-section class="q-gutter-md"
         @keyup.enter="loginUser"
       >
+        <span class="text-warning" v-show="hasError">{{ errorMessage }}</span>
+        <br>
         <q-input
             rounded
             standout
@@ -31,9 +33,6 @@
             v-model="remember"
             :label="$t('attributes.rememberMe')"
         />
-
-        <br>
-        <span class="text-warning" v-show="hasError">{{ errorMessage }}</span>
       </q-card-section>
       <q-card-actions align="center">
         <q-btn
@@ -78,28 +77,25 @@ export default {
   computed: {
     emailRules () {
       return [
-        () => {
+        () =>
           this.$v.email.required ||
           this.$t('validation.required', {
             attribute: this.$t('attributes.email')
-          })
-        },
-        () => {
+          }),
+        () =>
           this.$v.email.email ||
           this.$t('validation.invalid_format', {
             attribute: this.$t('attributes.email')
           })
-        }
       ]
     },
     passwordRules () {
       return [
-        () => {
+        () =>
           this.$v.password.required ||
           this.$t('validation.required', {
             attribute: this.$t('attributes.password')
           })
-        }
       ]
     }
   },
@@ -116,7 +112,7 @@ export default {
       this.auth.login(data)
         .then(() => {
           this.loading = false
-          this.store.dispatch('auth/getUser')
+          this.$store.dispatch('auth/getUser')
           this.$router.push('/home')
         })
         .catch(error => {
