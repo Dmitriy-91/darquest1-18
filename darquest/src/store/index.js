@@ -4,6 +4,7 @@ import VuexORM from '@vuex-orm/core'
 import VuexORMAxios from '@vuex-orm/plugin-axios'
 import axios from '../boot/axios'
 import { models } from '../core/index'
+import auth from './module-auth'
 
 // import example from './module-example'
 
@@ -24,7 +25,7 @@ for (const key in models) {
 }
 
 const Store = new Vuex.Store({
-  modules: {},
+  modules: { auth },
   plugins: [VuexORM.install(database)],
   strict: process.env.DEBUGGING
 })
