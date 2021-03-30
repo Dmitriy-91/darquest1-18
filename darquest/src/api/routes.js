@@ -6,6 +6,6 @@ export default {
     'forgot-password': '/forgot-password',
     'reset-password': '/reset-password',
     logout: '/logout',
-    user: '/auth-user'
+    user: '/api/auth-user'
   }
 }
