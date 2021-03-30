@@ -14,7 +14,7 @@ export default {
   components: { ToolbarAuthButton, ToolbarProfileInfo },
   computed: {
     userIsLogin () {
-      return true
+      return this.$store.getters['auth/userIsLogin']
     }
   }
 }
