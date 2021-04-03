@@ -7,4 +7,12 @@ const user = {
   usernameMinLength: 4
 }
 
-export { app, user }
+const team = {
+  nameMinLength: 4
+}
+
+const quest = {
+  team
+}
+
+export { app, user, quest }
