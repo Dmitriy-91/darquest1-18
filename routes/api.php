@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Quest\TeamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +23,16 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
      */
     Route::get('auth-user', [AuthController::class, 'user'])
         ->name( 'auth-user');
+
+    Route::group(['prefix' => 'quest'], function(){
+
+        /*
+         * Teams
+         */
+        Route::apiResource('team', TeamController::class);
+
+        Route::get('team/name-is-unique/{name}', [TeamController::class, 'nameIsUnique']);
+
+    });
 
 });
