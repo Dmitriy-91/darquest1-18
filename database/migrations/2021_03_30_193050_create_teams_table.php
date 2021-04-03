@@ -19,6 +19,7 @@ class CreateTeamsTable extends Migration
             $table->string('name', 100);
             $table->foreignId('founder')->constrained('users');
             $table->timestamps();
+            $table->softDeletes();
         });
         Schema::enableForeignKeyConstraints();
     }
