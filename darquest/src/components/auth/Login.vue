@@ -58,8 +58,7 @@
 </template>
 
 <script>
-import { required, email, minLength } from 'vuelidate/lib/validators'
-import { user as userSettings } from '../../setttings'
+import { required, email } from 'vuelidate/lib/validators'
 import api from 'src/api/index'
 
 export default {
@@ -138,8 +137,7 @@ export default {
       email
     },
     password: {
-      required,
-      minLength: minLength(userSettings.passwordMinLength)
+      required
     }
   }
 }
