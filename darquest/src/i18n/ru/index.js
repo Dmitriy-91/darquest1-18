@@ -31,7 +31,7 @@ export default {
     login: 'Логин',
     rememberMe: 'Запомнить меня'
   },
-  game: {
+  quest: {
     team: {
       'create-header': 'Создание новой команды'
     }
