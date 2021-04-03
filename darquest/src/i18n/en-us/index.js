@@ -30,5 +30,10 @@ export default {
     username: 'Username',
     login: 'Login',
     rememberMe: 'Remember Me'
+  },
+  game: {
+    team: {
+      'create-header': 'Create new team'
+    }
   }
 }
