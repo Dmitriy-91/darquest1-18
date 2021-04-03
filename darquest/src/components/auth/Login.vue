@@ -48,6 +48,7 @@
             icon="login"
             :label="$t('main.in_game')"
             :loading="loading"
+            :disable="$v.$invalid"
             @click="loginUser"
         >
         </q-btn>

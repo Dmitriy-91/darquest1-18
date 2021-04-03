@@ -47,6 +47,7 @@
             icon="login"
             :loading="loading"
             :label="$t('main.send')"
+            :disable="$v.$invalid"
             @click="sendForm"
         >
         </q-btn>

@@ -70,6 +70,7 @@
             glossy
             icon="login"
             :label="$t('main.in_game')"
+            :disable="$v.$invalid"
             @click="registerUser"
         >
         </q-btn>
