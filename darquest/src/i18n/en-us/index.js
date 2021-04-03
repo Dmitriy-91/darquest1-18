@@ -7,7 +7,8 @@ export default {
     send: 'Send',
     return: 'return',
     reset_passwordemail_sent: 'Reset password email sent.',
-    logout: 'Logout'
+    logout: 'Logout',
+    create: 'Create'
   },
   app: {
     name: 'DarQuest 1/18'
@@ -29,7 +30,8 @@ export default {
     confirmPassword: 'Confirm password',
     username: 'Username',
     login: 'Login',
-    rememberMe: 'Remember Me'
+    rememberMe: 'Remember Me',
+    'name-as-title': 'name'
   },
   quest: {
     team: {

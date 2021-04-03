@@ -7,13 +7,14 @@ export default {
     send: 'Отправить',
     return: 'Вернуться',
     reset_passwordemail_sent: 'На указанный e-mail отправлено письмо для сброса пароля.',
-    logout: 'Выйти'
+    logout: 'Выйти',
+    create: 'Создать'
   },
   app: {
     name: 'DarQuest 1/18'
   },
   validation: {
-    required: '{attribute} обязателен',
+    required: 'Поле {attribute} обязателено',
     invalid_format: 'Введите корректный {attribute}',
     incorrect_attribute: '{attribute} некорректен.',
     same: '{attribute} и {other} должны совпадать.',
@@ -29,7 +30,8 @@ export default {
     confirmPassword: 'Подтверждение пароля',
     username: 'Имя пользователя',
     login: 'Логин',
-    rememberMe: 'Запомнить меня'
+    rememberMe: 'Запомнить меня',
+    'name-as-title': 'Название'
   },
   quest: {
     team: {
