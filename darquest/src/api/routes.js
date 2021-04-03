@@ -7,5 +7,11 @@ export default {
     'reset-password': '/reset-password',
     logout: '/logout',
     user: '/api/auth-user'
+  },
+  quest: {
+    team: {
+      'name-is-unique': '/game/team/name-is-unique',
+      store: '/game/team'
+    }
   }
 }
