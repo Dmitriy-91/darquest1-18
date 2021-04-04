@@ -6,24 +6,31 @@
           <div class="text-h6 q-mb-md">{{ $t('main.sign_in') }}</div>
         </div>
       </div>
-      <q-card-section class="q-gutter-md"
-        @keyup.enter="loginUser"
+      <q-card-section
+          class="q-gutter-md"
+          @keyup.enter="loginUser"
       >
-        <span class="text-warning" v-show="hasError">{{ errorMessage }}</span>
-        <br>
+        <q-card-section
+            class="text-warning"
+            v-show="noDescription"
+        >
+          {{ errorText }}
+        </q-card-section>
         <q-input
             rounded
             standout
             v-model.trim="email"
             :label="$t('attributes.email')"
             :rules="emailRules"
+            :error-message="getErrorText('email')"
+            :error="checkHasError('email')"
             @input="$v.email.$touch()"
         />
         <q-input
             rounded
             standout
             type="password"
-            v-model.trim="password"
+            v-model="password"
             :label="$t('attributes.password')"
             :rules="passwordRules"
             @input="$v.password.$touch()"
@@ -60,16 +67,16 @@
 <script>
 import { required, email } from 'vuelidate/lib/validators'
 import api from 'src/api/index'
+import errorHandle from 'src/mixins/error-handling'
 
 export default {
   name: 'Login',
+  mixins: [errorHandle],
   data () {
     return {
       email: '',
       password: '',
       remember: false,
-      errorMessage: '',
-      hasError: false,
       loading: false,
       auth: api.auth
     }
@@ -101,8 +108,6 @@ export default {
   },
   methods: {
     loginUser () {
-      this.error = null
-      this.errorMessage = null
       this.loading = true
       const data = {
         email: this.email,
@@ -117,14 +122,7 @@ export default {
         })
         .catch(error => {
           this.loading = false
-          this.hasError = true
-          if (error.response.status === 422) {
-            this.errorMessage = this.$t('validation.invalit_data_to_login', {
-              attribute: this.$t('attributes.email')
-            })
-          } else {
-            this.errorMessage = error.message
-          }
+          this.handleApiError(error)
         })
     },
     forgotPassword () {

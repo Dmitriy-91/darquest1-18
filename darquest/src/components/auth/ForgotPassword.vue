@@ -15,6 +15,12 @@
           </div>
         </div>
       </div>
+      <q-card-section
+          class="text-warning"
+          v-show="noDescription"
+      >
+        {{ errorText }}
+      </q-card-section>
       <q-card-section class="q-gutter-md">
         <q-input
             rounded
@@ -22,18 +28,9 @@
             v-show="showInput"
             v-model.trim="email"
             :label="$t('attributes.email')"
-            :rules="[
-              () => $v.email.required
-              || $t('validation.required', {
-                'attribute': $t('attributes.email')
-              }),
-              () => $v.email.email
-              || $t('validation.invalid_format', {
-                'attribute': $t('attributes.email')
-              })
-            ]"
-            :error-message="errorMessage"
-            :error="hasError"
+            :rules="emailRules"
+            :error-message="getErrorText('email')"
+            :error="checkHasError('email')"
             @input="$v.email.$touch()"
             @keyup.enter="sendForm"
         />
@@ -45,13 +42,24 @@
             push
             glossy
             icon="login"
+            v-show="showInput"
             :loading="loading"
             :label="$t('main.send')"
             :disable="$v.$invalid"
             @click="sendForm"
         >
         </q-btn>
-        </q-card-actions>
+        <q-btn
+            class="full-width"
+            push
+            glossy
+            icon="replay"
+            v-show="!showInput"
+            :label="$t('main.repeat')"
+            @click="showInput = !showInput"
+        >
+        </q-btn>
+      </q-card-actions>
     </q-card>
   </div>
 </template>
@@ -59,24 +67,37 @@
 <script>
 import { required, email } from 'vuelidate/lib/validators'
 import api from 'src/api/index'
+import errorHandle from 'src/mixins/error-handling'
 
 export default {
   name: 'ForgotPassword',
+  mixins: [errorHandle],
   data () {
     return {
       email: '',
       auth: api.auth,
       loading: false,
-      hasError: false,
-      errorMessage: null,
       showInput: true,
       isSuccess: false
+    }
+  },
+  computed: {
+    emailRules () {
+      return [
+        () => this.$v.email.required ||
+          this.$t('validation.required', {
+            attribute: this.$t('attributes.email')
+          }),
+        () => this.$v.email.email ||
+          this.$t('validation.invalid_format', {
+            attribute: this.$t('attributes.email')
+          })
+      ]
     }
   },
   methods: {
     async sendForm () {
       this.loading = true
-      this.hasError = false
       this.auth.forgotPassword({
         email: this.email
       })
@@ -86,12 +107,8 @@ export default {
           this.loading = false
         })
         .catch(error => {
-          if (error.response.status === 422) {
-            this.errorMessage = this.$t('validation.email_has_not_register')
-          }
-          this.errorMessage = error.message
+          this.handleApiError(error)
           this.loading = false
-          this.hasError = true
         })
     },
     backToLogin () {
