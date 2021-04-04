@@ -8,7 +8,8 @@ export default {
     return: 'return',
     reset_passwordemail_sent: 'Reset password email sent.',
     logout: 'Logout',
-    create: 'Create'
+    create: 'Create',
+    repeat: 'Repeat'
   },
   app: {
     name: 'DarQuest 1/18'
@@ -22,7 +23,8 @@ export default {
       string: 'The {attribute} must be at least {min} characters.'
     },
     email_has_not_register: 'This e-mail is not registered.',
-    invalit_data_to_login: 'The given {attribute} or password was invalid.'
+    invalit_data_to_login: 'The given {attribute} or password was invalid.',
+    unique: 'The {attribute} is taken. Try another.'
   },
   attributes: {
     email: 'E-mail',

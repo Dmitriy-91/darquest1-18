@@ -8,7 +8,8 @@ export default {
     return: 'Вернуться',
     reset_passwordemail_sent: 'На указанный e-mail отправлено письмо для сброса пароля.',
     logout: 'Выйти',
-    create: 'Создать'
+    create: 'Создать',
+    repeat: 'Повторить'
   },
   app: {
     name: 'DarQuest 1/18'
@@ -22,7 +23,8 @@ export default {
       string: 'Количество символов в поле {attribute} должно быть не меньше {min}.'
     },
     email_has_not_register: 'Данный e-mail не зарегистрирован.',
-    invalit_data_to_login: 'Введенная пара {attribute} или пароль неверны.'
+    invalit_data_to_login: 'Введенная пара {attribute} или пароль неверны.',
+    unique: 'Это {attribute} уже занято. Попробуйте другое.'
   },
   attributes: {
     email: 'E-mail',
