@@ -1,14 +1,14 @@
 import axios from '../boot/axios'
-import router from './index'
+import routes from './routes'
 
 class Auth {
   csrf () {
-    return axios.get(router.routes.auth['csrf-cookie'])
+    return axios.get(routes.auth['csrf-cookie'])
   }
 
   async login ({ email, password, remember }) {
     await this.csrf()
-    return axios.post(router.routes.auth.login, {
+    return axios.post(routes.auth.login, {
       email,
       password,
       remember
@@ -16,30 +16,30 @@ class Auth {
   }
 
   register ({ name, email, password, confirmPassword }) {
-    return axios.post(router.routes.auth.register,
+    return axios.post(routes.auth.register,
       { name, email, password, password_confirmation: confirmPassword }
     )
   }
 
   async forgotPassword ({ email }) {
     await this.csrf()
-    return axios.post(router.routes.auth['forgot-password'], { email })
+    return axios.post(routes.auth['forgot-password'], { email })
   }
 
   async resetPassword ({ email, password, confirmPassword, token }) {
     await this.csrf()
-    return axios.post(router.routes.auth['reset-password'], {
+    return axios.post(routes.auth['reset-password'], {
       email, password, password_confirmation: confirmPassword, token
     })
   }
 
   logout () {
-    return axios.post(router.routes.auth.logout)
+    return axios.post(routes.auth.logout)
   }
 
   async authUser () {
     await this.csrf()
-    return await axios.get(router.routes.auth.user)
+    return await axios.get(routes.auth.user)
   }
 }
 

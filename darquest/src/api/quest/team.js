@@ -1,13 +1,13 @@
 import axios from '../../boot/axios'
-import router from '../index'
+import routes from '../routes'
 
 class Team {
   nameIsUnique (name) {
-    return axios.get(router.routes.quest.team['name-is-unique'] + '/' + name)
+    return axios.get(routes.quest.team['name-is-unique'] + '/' + name)
   }
 
   store ({ name }) {
-    return axios.post(router.routes.quest.team.store, {
+    return axios.post(routes.quest.team.store, {
       name
     })
   }
