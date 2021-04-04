@@ -10,8 +10,8 @@ export default {
   },
   quest: {
     team: {
-      'name-is-unique': '/game/team/name-is-unique',
-      store: '/game/team'
+      'name-is-unique': '/api/quest/team/name-is-unique',
+      store: '/api/quest/team'
     }
   }
 }
